@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+config="$HOME/.config/polybar/config.ini"
+battery=$(find /sys/class/power_supply -maxdepth 1 -type d -name 'BAT*' -printf '%f\n' | head -n 1 || true)
+adapter=$(find /sys/class/power_supply -maxdepth 1 -type d \( -name 'AC*' -o -name 'ADP*' \) -printf '%f\n' | head -n 1 || true)
+
+if [ -n "$battery" ] && [ -n "$adapter" ]; then
+    sed -i -E "s/^battery = .*/battery = $battery/; s/^adapter = .*/adapter = $adapter/" "$config"
+fi

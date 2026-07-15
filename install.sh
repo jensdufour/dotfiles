@@ -26,10 +26,13 @@ install_user_file "$repo_dir/.config/polybar/launch.sh" "$HOME/.config/polybar/l
 install_user_file "$repo_dir/.config/picom/picom.conf" "$HOME/.config/picom/picom.conf"
 install_user_file "$repo_dir/.config/rofi/config.rasi" "$HOME/.config/rofi/config.rasi"
 install_user_file "$repo_dir/.config/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+install_user_file "$repo_dir/sddm/go/background.png" "$HOME/.local/share/backgrounds/go.png"
 
 for script in "$repo_dir"/.local/bin/*; do
     install_user_file "$script" "$HOME/.local/bin/$(basename "$script")" 755
 done
+
+"$HOME/.local/bin/configure-polybar-hardware"
 
 sudo install -Dm644 "$repo_dir/sddm/10-go-theme.conf" /etc/sddm.conf.d/10-go-theme.conf
 sudo rm -rf /usr/share/sddm/themes/go

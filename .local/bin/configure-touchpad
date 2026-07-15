@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+touchpad=$(xinput list --name-only | grep -i 'touchpad' | head -n 1 || true)
+[ -n "$touchpad" ] || exit 0
+
+xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1 2>/dev/null || true
+xinput set-prop "$touchpad" "libinput Scrolling Pixel Distance" 30 2>/dev/null || true

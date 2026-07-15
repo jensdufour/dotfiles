@@ -1,0 +1,41 @@
+--- a/unlock_indicator.c
++++ b/unlock_indicator.c
+@@ -622,28 +622,15 @@ static void draw_elements(cairo_t *const ctx, DrawData const *const draw_data) {
+     // indicator stuff
+     if (!bar_enabled) {
+         draw_indic(ctx, draw_data->indicator_x, draw_data->indicator_y);
+     } else {
+-        if (unlock_state == STATE_KEY_ACTIVE ||
+-            unlock_state == STATE_BACKSPACE_ACTIVE) {
+-            // note: might be biased to cause more hits on lower indices
+-            // maybe see about doing ((double) rand() / RAND_MAX) * num_bars
+-            int index = rand() % num_bars;
+-            bar_heights[index] = max_bar_height;
+-            for (int i = 0; i < ((max_bar_height / bar_step) + 1); ++i) {
+-                int low_ind = index - i;
+-                while (low_ind < 0) {
+-                    low_ind += num_bars;
+-                }
+-                int high_ind = (index + i) % num_bars;
+-                int tmp_height = max_bar_height - (bar_step * i);
+-                if (tmp_height < 0)
+-                    tmp_height = 0;
+-                if (bar_heights[low_ind] < tmp_height)
+-                    bar_heights[low_ind] = tmp_height;
+-                if (bar_heights[high_ind] < tmp_height)
+-                    bar_heights[high_ind] = tmp_height;
+-                if (tmp_height == 0)
+-                    break;
+-            }
+-        }
++        if (unlock_state == STATE_KEY_ACTIVE ||
++            unlock_state == STATE_KEY_PRESSED ||
++            unlock_state == STATE_BACKSPACE_ACTIVE) {
++            int filled_bars = input_position;
++            if (filled_bars > num_bars)
++                filled_bars = num_bars;
++
++            for (int i = 0; i < num_bars; ++i)
++                bar_heights[i] = i < filled_bars ? max_bar_height : 0;
++        }
+         draw_bar(ctx, draw_data->bar_x, draw_data->bar_y, draw_data->bar_offset);

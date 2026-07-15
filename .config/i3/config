@@ -16,13 +16,12 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Startup
-exec_always --no-startup-id feh --bg-fill "$HOME/Pictures/wallpaper.png" || feh --bg-fill '#2e3440'
+exec_always --no-startup-id feh --bg-fill "$HOME/.local/share/backgrounds/go.png" || feh --bg-fill '#2e3440'
 exec_always --no-startup-id dunst
 exec_always --no-startup-id lxpolkit
 exec_always --no-startup-id picom --config "$HOME/.config/picom/picom.conf"
 exec_always --no-startup-id xss-lock -- "$HOME/.local/bin/lock"
-exec_always --no-startup-id xinput set-prop "ELAN Touchpad and Keyboard Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always --no-startup-id xinput set-prop "ELAN Touchpad and Keyboard Touchpad" "libinput Scrolling Pixel Distance" 30
+exec_always --no-startup-id "$HOME/.local/bin/configure-touchpad"
 exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 
 # Appearance
