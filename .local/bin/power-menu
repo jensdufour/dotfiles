@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+choice=$(printf '%s\n' 'Log off' 'Reboot' 'Shut down' |
+    rofi -dmenu -i -no-custom -p 'Power' -theme "$HOME/.config/rofi/power-menu.rasi") || exit 0
+
+case "$choice" in
+    'Log off') i3-msg exit ;;
+    Reboot) systemctl reboot ;;
+    'Shut down') systemctl poweroff ;;
+esac

@@ -1,0 +1,29 @@
+@import "~/.config/rofi/config.rasi"
+
+window {
+    fullscreen: false;
+    width: 260px;
+    height: 180px;
+    location: northeast;
+    anchor: northeast;
+    x-offset: -10px;
+    y-offset: 44px;
+    background-color: @graphite-deep;
+    border: 1px;
+    border-color: @muted;
+}
+
+mainbox {
+    children: [ listview ];
+    padding: 8px;
+    spacing: 0px;
+}
+
+listview {
+    lines: 3;
+    fixed-height: true;
+}
+
+element {
+    padding: 12px 14px;
+}

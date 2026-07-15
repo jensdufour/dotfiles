@@ -25,6 +25,7 @@ install_user_file "$repo_dir/.config/polybar/config.ini" "$HOME/.config/polybar/
 install_user_file "$repo_dir/.config/polybar/launch.sh" "$HOME/.config/polybar/launch.sh" 755
 install_user_file "$repo_dir/.config/picom/picom.conf" "$HOME/.config/picom/picom.conf"
 install_user_file "$repo_dir/.config/rofi/config.rasi" "$HOME/.config/rofi/config.rasi"
+install_user_file "$repo_dir/.config/rofi/power-menu.rasi" "$HOME/.config/rofi/power-menu.rasi"
 install_user_file "$repo_dir/.config/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 install_user_file "$repo_dir/sddm/go/background.png" "$HOME/.local/share/backgrounds/go.png"
 

@@ -10,3 +10,4 @@ config text eol=lf
 lock text eol=lf
 network-* text eol=lf
 bluetooth-status text eol=lf
+power-menu text eol=lf
