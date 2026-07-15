@@ -1,29 +1,53 @@
-@import "~/.config/rofi/config.rasi"
+@import "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+configuration {
+    show-icons: false;
+}
+
+* {
+    normal-foreground: #eceff4;
+    normal-background: #1f232b;
+    alternate-normal-foreground: @normal-foreground;
+    alternate-normal-background: #1f232b;
+    selected-normal-foreground: #eceff4;
+    selected-normal-background: #4c566a;
+    border-color: #4c566a;
+    separatorcolor: #3b4252;
+}
 
 window {
     fullscreen: false;
-    width: 260px;
-    height: 180px;
+    width: 280px;
+    height: 160px;
     location: northeast;
     anchor: northeast;
     x-offset: -10px;
     y-offset: 44px;
-    background-color: @graphite-deep;
+    background-color: #1f232b;
     border: 1px;
-    border-color: @muted;
+    border-color: #4c566a;
+    padding: 8px;
 }
 
 mainbox {
     children: [ listview ];
-    padding: 8px;
     spacing: 0px;
+    background-color: #1f232b;
 }
 
 listview {
     lines: 3;
     fixed-height: true;
+    border: 0px;
+    padding: 0px;
+    spacing: 3px;
+    scrollbar: false;
 }
 
 element {
-    padding: 12px 14px;
+    padding: 9px 12px;
+}
+
+element-text {
+    highlight: None;
 }
