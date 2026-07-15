@@ -1,0 +1,10 @@
+[SddmGreeterTheme]
+Name=Go
+Description=Graphite login theme for Go
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=go
+Theme-API=2.0
+QtVersion=6

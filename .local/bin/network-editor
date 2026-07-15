@@ -1,0 +1,8 @@
+#!/bin/sh
+printf "%s
+" "2026-07-15T11:30:38+02:00 wlan-click" >> /tmp/wlan-click.log
+i3Socket=$(find /run/user/1000/i3 -maxdepth 1 -type s -name 'ipc-socket.*' -print -quit)
+if i3-msg -s "$i3Socket" -t get_tree | grep -q '"class":"Nm-connection-editor"'; then
+    exec i3-msg -s "$i3Socket" '[class="Nm-connection-editor"] focus'
+fi
+exec env DISPLAY=:0 XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus nm-connection-editor

@@ -1,0 +1,38 @@
+#!/bin/sh
+set -eu
+
+background=/usr/share/sddm/themes/go/background.png
+
+lock() {
+    /usr/local/bin/i3lock-color -n "$@" \
+        --bar-indicator \
+        --bar-position h/2-32 \
+        --bar-direction 1 \
+        --bar-orientation horizontal \
+        --bar-width 12 \
+        --bar-total-width 360 \
+        --bar-base-width 4 \
+        --bar-max-height 4 \
+        --bar-color 4c566a99 \
+        --keyhlcolor eceff4dd \
+        --bshlcolor bf616add \
+        --ringvercolor eceff4ff \
+        --ringwrongcolor bf616aff \
+        --veriftext 'Checking' \
+        --wrongtext 'Try again' \
+        --noinputtext '' \
+        --statuspos 'w/2:h/2' \
+        --verifpos 'w/2:h/2' \
+        --wrongpos 'w/2:h/2' \
+        --verifsize 12 \
+        --wrongsize 12 \
+        --verifcolor eceff4cc \
+        --wrongcolor bf616aff \
+        --redraw-thread
+}
+
+if [ -r "$background" ]; then
+    lock -i "$background"
+else
+    lock -c 2e3440
+fi

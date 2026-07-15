@@ -1,0 +1,7 @@
+#!/bin/sh
+ssid=$(nmcli -t -f ACTIVE,SSID dev wifi 2>/dev/null | awk -F: '$1 == "yes" { sub(/^yes:/, ""); print; exit }')
+if [ -n "$ssid" ]; then
+    printf '󰤨 %s\n' "$ssid"
+else
+    printf '󰤭 offline\n'
+fi
